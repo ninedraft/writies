@@ -2,7 +2,7 @@ package writies
 
 import "io"
 
-func Write(dst io.Writer, strs ...[]byte) (int, error) {
+func WriteMany(dst io.Writer, strs ...[]byte) (int, error) {
 	var written int
 	for _, str := range strs {
 		n, err := dst.Write(str)
@@ -14,7 +14,7 @@ func Write(dst io.Writer, strs ...[]byte) (int, error) {
 	return written, nil
 }
 
-func Join(dst io.Writer, sep []byte, strs [][]byte) (int, error) {
+func Join(dst io.Writer, strs [][]byte, sep []byte) (int, error) {
 	var written int
 	for i, str := range strs {
 		if i > 0 {
@@ -42,7 +42,7 @@ func WriteN(dst io.Writer, str []byte, n int) (int, error) {
 		n, err := dst.Write(str)
 		written += n
 		if err != nil {
-			return written, nil
+			return written, err
 		}
 	}
 	return written, nil
