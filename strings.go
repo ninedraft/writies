@@ -5,6 +5,11 @@ import (
 	"unsafe"
 )
 
+// WriteString writes string to writer.
+// It does not allocate memory, so it can be used
+// in performance critical code instead of io.WriteString.
+//
+// Returns number of bytes written and error, if any occurred.
 func WriteString(dst io.Writer, str string) (int, error) {
 	if str == "" {
 		return 0, nil
@@ -15,6 +20,11 @@ func WriteString(dst io.Writer, str string) (int, error) {
 	return dst.Write(p)
 }
 
+// WriteStrings writes multiple strings to writer.
+// It does not allocate memory, so it can be used in performance critical code.
+//
+// Returns number of bytes written and error, if any occurred.
+// It stops writing on first error.
 func WriteStrings(dst io.Writer, strs ...string) (int, error) {
 	var written int
 	for _, str := range strs {
@@ -27,6 +37,12 @@ func WriteStrings(dst io.Writer, strs ...string) (int, error) {
 	return written, nil
 }
 
+// JoinStrings joins strings with separator and writes result to writer.
+// It does not allocate memory, so it can be used in performance critical code.
+//
+// Returns number of bytes written and error, if any occurred.
+// It stops writing on first error.
+// It does not write anything if strs is empty.
 func JoinStrings(dst io.Writer, strs []string, sep string) (int, error) {
 	var written int
 	for i, str := range strs {
@@ -46,6 +62,12 @@ func JoinStrings(dst io.Writer, strs []string, sep string) (int, error) {
 	return written, nil
 }
 
+// WriteStringN writes string n times to writer.
+// It does not allocate memory, so it can be used in performance critical code.
+//
+// Returns number of bytes written and error, if any occurred.
+// It stops writing on first error.
+// It does not write anything if n <= 0.
 func WriteStringN(dst io.Writer, str string, n int) (int, error) {
 	if str == "" {
 		return 0, nil
