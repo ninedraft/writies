@@ -62,13 +62,13 @@ func JoinStrings(dst io.Writer, strs []string, sep string) (int, error) {
 	return written, nil
 }
 
-// WriteStringN writes string n times to writer.
+// RepeatString writes string n times to writer.
 // It does not allocate memory, so it can be used in performance critical code.
 //
 // Returns number of bytes written and error, if any occurred.
 // It stops writing on first error.
 // It does not write anything if n <= 0.
-func WriteStringN(dst io.Writer, str string, n int) (int, error) {
+func RepeatString(dst io.Writer, str string, n int) (int, error) {
 	if str == "" {
 		return 0, nil
 	}

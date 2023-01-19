@@ -179,7 +179,7 @@ func TestWriteStringN(test *testing.T) {
 	var expected = strings.Repeat(input, N)
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteStringN(got, input, N)
+	n, err := writies.RepeatString(got, input, N)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -197,7 +197,7 @@ func TestWriteStringN_Negative(test *testing.T) {
 	const input = "Hello, World!"
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteStringN(got, input, -1)
+	n, err := writies.RepeatString(got, input, -1)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -215,7 +215,7 @@ func TestWriteStringN_Zero(test *testing.T) {
 	const input = "Hello, World!"
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteStringN(got, input, 0)
+	n, err := writies.RepeatString(got, input, 0)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -238,7 +238,7 @@ func TestWriteStringN_Error(test *testing.T) {
 		n:   -1000,
 	}
 
-	n, err := writies.WriteStringN(wr, input, N)
+	n, err := writies.RepeatString(wr, input, N)
 
 	if !errors.Is(err, wr.err) {
 		test.Fatal("unexpected error", err)

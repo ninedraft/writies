@@ -165,7 +165,7 @@ func TestWriteN(test *testing.T) {
 	expected := bytes.Repeat([]byte("Hello, World!"), N)
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteN(got, input, N)
+	n, err := writies.Repeat(got, input, N)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -183,7 +183,7 @@ func TestWriteN_Negative(test *testing.T) {
 	input := []byte("Hello, World!")
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteN(got, input, -1)
+	n, err := writies.Repeat(got, input, -1)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -201,7 +201,7 @@ func TestWriteN_Zero(test *testing.T) {
 	input := []byte("Hello, World!")
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteN(got, input, 0)
+	n, err := writies.Repeat(got, input, 0)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -218,7 +218,7 @@ func TestWriteN_Empty(test *testing.T) {
 	test.Parallel()
 
 	got := &bytes.Buffer{}
-	n, err := writies.WriteN(got, nil, 100)
+	n, err := writies.Repeat(got, nil, 100)
 
 	if err != nil {
 		test.Fatal("unexpected error", err)
@@ -240,7 +240,7 @@ func TestWriteN_Error(test *testing.T) {
 		n:   -1000,
 	}
 
-	n, err := writies.WriteN(wr, input, 100)
+	n, err := writies.Repeat(wr, input, 100)
 
 	if !errors.Is(err, wr.err) {
 		test.Fatal("unexpected error", err)

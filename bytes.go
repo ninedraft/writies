@@ -45,13 +45,13 @@ func Join(dst io.Writer, strs [][]byte, sep []byte) (int, error) {
 	return written, nil
 }
 
-// WriteN writes byte slice n times to writer.
+// Repeat writes byte slice n times to writer.
 // It does not allocate memory, so it can be used in performance critical code.
 //
 // Returns number of bytes written and error, if any occurred.
 // It stops writing on first error.
 // It does not write anything if n <= 0.
-func WriteN(dst io.Writer, str []byte, n int) (int, error) {
+func Repeat(dst io.Writer, str []byte, n int) (int, error) {
 	if len(str) == 0 {
 		return 0, nil
 	}
