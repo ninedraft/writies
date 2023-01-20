@@ -6,11 +6,17 @@ Provides functions for joining, repeating and writing multiple strings to writer
 ## Installation
 
 ```bash
-go get github.com/ninedraft/writies
+go get github.com/ninedraft/writies@latest
 ```
 
 ## Usage and docs
 Wisit [pkg.go.dev](https://pkg.go.dev/github.com/ninedraft/writies) for docs and examples.
+
+## Why I should import this package for just 3 functions?
+Probably you don't! Just copy-paste them to your project, if you need them.
+
+## Dependencies
+None
 
 ## License
 BSD 3-Clause License
