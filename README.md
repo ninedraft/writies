@@ -5,6 +5,8 @@ Provides functions for joining, repeating and writing multiple strings to writer
 
 ## Installation
 
+Min go version: 1.20
+
 ```bash
 go get github.com/ninedraft/writies@latest
 ```
